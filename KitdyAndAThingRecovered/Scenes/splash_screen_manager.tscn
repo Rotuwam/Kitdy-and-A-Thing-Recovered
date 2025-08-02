@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=4 uid="uid://bf1uoy1c2i4pb"]
+
+[ext_resource type="Script" uid="uid://dwjmahq4g6alg" path="res://Scripts/splash_screen_manager.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bv538l5dqikyp" path="res://Assests/opening screen.png" id="2"]
+
+[node name="splash_screen_manager" type="Control" node_paths=PackedStringArray("splash_screen")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+splash_screen = NodePath("splash")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 642.0
+offset_bottom = 359.0
+scale = Vector2(2.1, 2.1)
+color = Color(0, 0, 0, 1)
+
+[node name="splash" type="Sprite2D" parent="."]
+position = Vector2(642, 359)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2")

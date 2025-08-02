@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=4 uid="uid://cs8pwrxr5vxix"]
+
+[ext_resource type="Script" uid="uid://d2l8nlb6hhrfp" path="res://addons/dialogue_manager/components/errors_panel.gd" id="1"]
+
+[sub_resource type="Image" id="Image_jdihi"]
+data = {
+"data": PackedByteArray("////AP///wD/gIAE/4CABP+AgAT/gIAE/4CABP+AgAT/gIAE////AP///wD///8A////AP///wD///8A////AP///wD///8A/11d//9dXf//XV3//11d//9dXf//XV3//11d/////wD/XV2D////AP///wD///8A////AP///wD///8A////AP9dXf//XV3//11d//9dXf//XV3//11d//9dXf////8A/11d//9dXYP///8A////AP///wD///8A////AP///wD/XV3//11d//9dXf//XV3//11d//9dXf//XV3/////AP9dXf//XV3//11dg////wD///8A////AP///wD///8A/11d//9dXf//XV3//11d//9dXf//XV3//11d/////wD/XV38/11d/P9dXfz/Xl5/////AP///wD///8A////AP9dXf//XV3//11d//9dXf//XV3//11d//9dXf//gIAE/4CABP+AgAT/gIAE/4CABP///wD///8A////AP///wD/XV3//11d//9dXf//XV3//11d//9dXf//XV3//11d//9dXf//XV3//11d//9dXf////8A////AP///wD///8A/11d//9dXf//XV3//11d//9dXf//XV3//11d//9dXf//XV3//11d//9dXf//XV3/////AP///wD///8A////AP9dXef/XV03/2FhOv9dXen/XV3//11d//9dXef/Xl42/15eOf9dXen/XV3//11d/////wD///8A////AP///wD/YWEq////AP///wD/YWEq/11d6f9dXej/XV0p////AP///wD/YWEq/11d6f9dXej///8A////AP///wD///8A////AP9gYC3/YWEq////AP9hYSr/YWEq////AP9iYi//YWEq////AP9hYSr/YWEq////AP///wD///8A////AP9gYC3/XV3r/11d6f9hYSr///8A////AP9eXi7/XV3s/11d6f9hYSr///8A////AP///wD///8A////AP///wD/XV3r/11d//9dXf//XV3p/19fO/9gYD3/XV3r/11d//9dXf//XV3p/19fO/9gYD3///8A////AP///wD///8A/11d//9dXf//XV3//11d//9dXf//XV3//11d//9dXf//XV3//11d//9dXf//XV3/////AP///wD///8A////AP9dXfz/XV38/11d/P9dXfz/XV38/11d/P9dXfz/XV38/11d/P9dXfz/XV38/11d/P///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AA=="),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_s6fxl"]
+image = SubResource("Image_jdihi")
+
+[node name="ErrorsPanel" type="HBoxContainer"]
+visible = false
+offset_right = 1024.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+metadata/_edit_layout_mode = 1
+
+[node name="ErrorButton" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/h_separation = 3
+icon = SubResource("ImageTexture_s6fxl")
+flat = true
+alignment = 0
+text_overrun_behavior = 4
+
+[node name="Spacer" type="Control" parent="."]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="PreviousButton" type="Button" parent="."]
+layout_mode = 2
+icon = SubResource("ImageTexture_s6fxl")
+flat = true
+
+[node name="CountLabel" type="Label" parent="."]
+layout_mode = 2
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 2
+icon = SubResource("ImageTexture_s6fxl")
+flat = true
+
+[connection signal="pressed" from="ErrorButton" to="." method="_on_error_button_pressed"]
+[connection signal="pressed" from="PreviousButton" to="." method="_on_previous_button_pressed"]
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

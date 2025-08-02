@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=4 uid="uid://b8db1lp6g44jq"]
+
+[ext_resource type="Script" uid="uid://by4diw0yvxh7h" path="res://Scripts/jk.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://ckddsblhycmlr" path="res://Scenes/jk_bullets.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://vdwawii6b84q" path="res://Assests/JOE KEERY.png" id="3"]
+[ext_resource type="PackedScene" uid="uid://ceyxfmmtdhvgs" path="res://Scenes/health_bar.tscn" id="4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64n5m"]
+atlas = ExtResource("3")
+region = Rect2(0, 0, 915, 847)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ui6l"]
+atlas = ExtResource("3")
+region = Rect2(915, 0, 915, 847)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6d23"]
+atlas = ExtResource("3")
+region = Rect2(0, 0, 915, 847)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jbrga"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64n5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ui6l")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6d23")
+}],
+"loop": true,
+"name": &"standing",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rnjqx"]
+radius = 263.427
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_64n5m"]
+radius = 231.871
+
+[node name="JK" type="CharacterBody2D" groups=["jk"]]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1")
+jk_bullets = ExtResource("2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jbrga")
+animation = &"hurt"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-19, -3)
+shape = SubResource("CircleShape2D_rnjqx")
+
+[node name="jk_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jk_hitbox"]
+position = Vector2(-22, 6)
+shape = SubResource("CircleShape2D_64n5m")
+
+[node name="shoot_speed" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="jk_bullets" parent="." instance=ExtResource("2")]
+position = Vector2(-18, 84)
+
+[node name="health_bar" parent="." instance=ExtResource("4")]
+offset_left = -274.0
+offset_top = -500.0
+offset_right = 214.0
+offset_bottom = -414.0
+max_value = 20.0
+
+[node name="hurt_timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="shoot_speed" to="." method="_on_shoot_speed_timeout"]
+[connection signal="timeout" from="hurt_timer" to="." method="_on_hurt_timer_timeout"]

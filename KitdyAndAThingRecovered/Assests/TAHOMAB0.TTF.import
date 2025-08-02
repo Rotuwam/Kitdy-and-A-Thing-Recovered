@@ -1,0 +1,15 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://cgkusxj656rpg"
+path="res://.godot/imported/TAHOMAB0.TTF-78028d9d91c5757dc5a2fdc800690b9f.fontdata"
+
+[deps]
+
+source_file="res://Assests/TAHOMAB0.TTF"
+dest_files=["res://.godot/imported/TAHOMAB0.TTF-78028d9d91c5757dc5a2fdc800690b9f.fontdata"]
+
+[params]
+
+dummy_value_ignore_me=0

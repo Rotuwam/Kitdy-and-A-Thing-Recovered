@@ -1,0 +1,150 @@
+[gd_scene load_steps=11 format=4 uid="uid://bdqsjbep1qklm"]
+
+[ext_resource type="Script" uid="uid://bwubtcxyo22u0" path="res://Scripts/pause_menu.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://d3niwtnprc4yq" path="res://Assests/BG.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://djhiq8vnwj6ou" path="res://Assests/UI.png" id="3"]
+[ext_resource type="PackedScene" uid="uid://mgpa611gop12" path="res://Scenes/install_sounds.tscn" id="4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b7idg"]
+texture = ExtResource("3")
+region_rect = Rect2(641, 839, 383, 127)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7de7r"]
+texture = ExtResource("3")
+region_rect = Rect2(641, 359, 383, 127)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u5661"]
+texture = ExtResource("3")
+region_rect = Rect2(641, 520, 383, 137)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_66qni"]
+texture = ExtResource("3")
+region_rect = Rect2(40, 644, 182, 178)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2dfs2"]
+texture = ExtResource("3")
+region_rect = Rect2(283, 646, 187, 174)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gqcn8"]
+texture = ExtResource("3")
+region_rect = Rect2(962, 1148, 53, 52)
+
+[node name="pause_menu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1")
+
+[node name="bg" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(641.5, 359)
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.196078)
+offset_left = -5.0
+offset_top = -4.0
+offset_right = 1294.0
+offset_bottom = 737.0
+color = Color(0, 0, 0, 0.611765)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1283.0
+offset_bottom = 723.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -298.5
+offset_top = 142.0
+offset_right = 300.5
+offset_bottom = 580.0
+grow_horizontal = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3")
+region_rect = Rect2(504, 163, 128, 127)
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -179.5
+offset_top = 40.0
+offset_right = 170.5
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="levels" type="Button" parent="Control/MarginContainer/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(350, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 55
+theme_override_styles/hover = SubResource("StyleBoxTexture_b7idg")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7de7r")
+theme_override_styles/normal = SubResource("StyleBoxTexture_u5661")
+text = "LEVELS"
+
+[node name="settings" type="Button" parent="Control/MarginContainer/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(350, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 55
+theme_override_styles/hover = SubResource("StyleBoxTexture_b7idg")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7de7r")
+theme_override_styles/normal = SubResource("StyleBoxTexture_u5661")
+text = "SETTINGS"
+
+[node name="main_menu" type="Button" parent="Control/MarginContainer/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(350, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 55
+theme_override_styles/hover = SubResource("StyleBoxTexture_b7idg")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7de7r")
+theme_override_styles/normal = SubResource("StyleBoxTexture_u5661")
+text = "MAIN MENU"
+
+[node name="blep" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 462.0
+offset_right = 926.0
+offset_bottom = 562.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_66qni")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2dfs2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_66qni")
+
+[node name="quit" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 897.0
+offset_top = 116.0
+offset_right = 953.0
+offset_bottom = 169.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_gqcn8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gqcn8")
+theme_override_styles/normal = SubResource("StyleBoxTexture_gqcn8")
+
+[node name="InstallSounds" parent="." instance=ExtResource("4")]
+root_path = NodePath("..")
+
+[connection signal="pressed" from="Control/MarginContainer/NinePatchRect/VBoxContainer/levels" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/NinePatchRect/VBoxContainer/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/NinePatchRect/VBoxContainer/main_menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Control/blep" to="." method="_on_blep_pressed"]
+[connection signal="pressed" from="Control/quit" to="." method="_on_quit_pressed"]

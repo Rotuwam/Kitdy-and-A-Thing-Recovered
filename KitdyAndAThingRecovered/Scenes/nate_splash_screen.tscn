@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=4 uid="uid://lplni5ydso04"]
+
+[ext_resource type="Script" uid="uid://6pkele4ndso1" path="res://Scripts/nate_splash_screen.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://d3niwtnprc4yq" path="res://Assests/BG.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://djhiq8vnwj6ou" path="res://Assests/UI.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://be4pld36gadm" path="res://Assests/NATE (2).png" id="4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rg4a3"]
+texture = ExtResource("3")
+region_rect = Rect2(40, 644, 182, 178)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_be5x4"]
+texture = ExtResource("3")
+region_rect = Rect2(283, 646, 187, 174)
+
+[node name="nate_splash_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(642, 359)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 642.0
+offset_bottom = 359.0
+scale = Vector2(2.01, 2.01)
+color = Color(0, 0, 0, 0.298039)
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 312.0
+offset_top = 86.0
+offset_right = -55.0
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3")
+region_rect = Rect2(640, 162, 385, 128)
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
+
+[node name="Label" type="Label" parent="Control/MarginContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 50.0
+offset_right = 922.0
+offset_bottom = 488.0
+theme_override_font_sizes/font_size = 50
+text = "THIS IS NATE, A FRIEND OF KITDY
+IN HERE HE IS A LITTLE GREMLIN.
+
+
+HIS CATCH PHRASE IS \"KITDY!\"
+
+       CLICK ON BLEP >
+       TO FIND HIS LINKS"
+
+[node name="nate" type="Sprite2D" parent="."]
+position = Vector2(271, 356)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4")
+
+[node name="blep" type="Button" parent="."]
+layout_mode = 0
+offset_left = 929.0
+offset_top = 412.0
+offset_right = 1031.0
+offset_bottom = 512.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_rg4a3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_be5x4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rg4a3")
+
+[node name="dismiss_timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 633.0
+offset_top = 590.0
+offset_right = 1218.0
+offset_bottom = 636.875
+theme_override_font_sizes/font_size = 50
+text = "PRESS SPACE TO CONTINUE"
+
+[connection signal="pressed" from="blep" to="." method="_on_blep_pressed"]

@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=4 uid="uid://bokbebxvp7pne"]
+
+[ext_resource type="Script" uid="uid://cfrow7opeoc8k" path="res://Scripts/credits.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://djhiq8vnwj6ou" path="res://Assests/UI.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://c2n7cxomycubl" path="res://Assests/Screenshot 2025-05-11 022802.png" id="3"]
+[ext_resource type="PackedScene" uid="uid://mgpa611gop12" path="res://Scenes/install_sounds.tscn" id="4"]
+[ext_resource type="Texture2D" uid="uid://bdvj4kbdadm8k" path="res://Assests/star.png" id="5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ccovl"]
+texture = ExtResource("2")
+region_rect = Rect2(962, 1148, 53, 52)
+
+[node name="finish_screen" type="Node2D"]
+script = ExtResource("1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 642.0
+offset_bottom = 359.0
+scale = Vector2(2.01, 2.01)
+color = Color(0, 0, 0, 0.298039)
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -641.0
+offset_top = -361.0
+offset_right = 641.0
+offset_bottom = 361.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2")
+region_rect = Rect2(640, 162, 385, 128)
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
+
+[node name="Label" type="Label" parent="Control/MarginContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 304.0
+offset_right = 1291.0
+offset_bottom = 724.625
+theme_override_font_sizes/font_size = 30
+text = "DAGONZO, PREZIE, AKANEKILL333, AJRKMAN, LDOG3001,LUNAR_NIXAN, GEO 
+[THANK YOUFOR HUMORING ME DURING THE LOCKDOWN LOBBY]
+SPECTRESOFZIZEK [THANK YOU FOR HELPING ME WITH LITTLE PROGRAMMING STUFF]
+GEMINIGHOSTSYMPHONY, LUNAR_NIXAN [THANK YOU FOR TEST PLAYING AND YOUR 
+ENTHUSIASTIC EXCITMENT, YOU GOT ME THROUGH MOMENTS WHERE I FELT LIKE GIVING UP]
+LUNAR_NIXAN [THE TRUE MVP, THANK YOU FOR HOSTING THE GAME NIGHT AND FOR THE 
+ENEMY SUGGESTIONS, I HAVE NO IDEA WHAT THIS GAME WOULD LOOK LIKE WITHOUT YOU]
+KITDY [THANK YOU FOR BEING THE BEST STREAMER]
+THE DAWG POUND [THANK YOU FOR BEING THE BEST COMMUNITY]
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(635, 162)
+scale = Vector2(0.591111, 0.591111)
+texture = ExtResource("3")
+
+[node name="quit" type="Button" parent="."]
+offset_left = 1208.0
+offset_top = 14.0
+offset_right = 1264.0
+offset_bottom = 67.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_ccovl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ccovl")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ccovl")
+
+[node name="InstallSounds" parent="." instance=ExtResource("4")]
+root_path = NodePath("..")
+
+[node name="star" type="Sprite2D" parent="."]
+position = Vector2(975, 42)
+scale = Vector2(1.59091, 1.59091)
+texture = ExtResource("5")
+
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

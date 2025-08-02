@@ -1,0 +1,15 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://bwtwbebfwvyhr"
+path="res://.godot/imported/Chalkboard-Regular.ttf-7ef700edac0007b7bcfe2c1c12005b9d.fontdata"
+
+[deps]
+
+source_file="res://Assests/Chalkboard-Regular.ttf"
+dest_files=["res://.godot/imported/Chalkboard-Regular.ttf-7ef700edac0007b7bcfe2c1c12005b9d.fontdata"]
+
+[params]
+
+dummy_value_ignore_me=0

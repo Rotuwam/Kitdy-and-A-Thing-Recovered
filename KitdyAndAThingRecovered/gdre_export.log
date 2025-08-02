@@ -1,0 +1,48 @@
+GDRE Tools v1.0.0
+Windows 10.0.26100, AMD Radeon(TM) Vega 8 Graphics, opengl3
+Opening file: C:/Users/HP/Downloads/LAPTOP STUFF/KITDY GAME/KITDY AND A THING/Kitdy and a Thing.exe
+Loaded 372 imported files
+Detected Engine Version: 4.4.1
+Detected Bytecode Revision: 4.3.0-stable (77af6ca)
+Verified 756 files, no errors detected!
+Extracted 756 files, no errors detected!
+Recreating plugin configs...
+ERROR: Failed to find gdextension libraries for plugin res://addons/limboai/bin/limboai.gdextension
+   at: GDExtensionExporter::export_resource (modules\gdsdecomp\exporters\gdextension_exporter.cpp:127)
+Saved project config.
+
+
+********************************EXPORT REPORT********************************
+
+Totals:                                 
+Decompiled scripts:                     107
+Failed scripts:                         0
+Imported resources for export session:  372
+Successfully converted:                 371
+Lossy:                                  85
+Rewrote metadata:                       163
+Non-importable conversions:             0
+Not converted:                          0
+Failed conversions:                     1
+-------------
+
+------
+
+Failed conversions:
+* res://addons/limboai/bin/limboai.gdextension
+  * Failed to find gdextension libraries for plugin res://addons/limboai/bin/limboai.gdextension
+  * Errors:
+		-	ERROR: Failed to find gdextension libraries for plugin res://addons/limboai/bin/limboai.gdextension
+		-	at: GDExtensionExporter::export_resource (modules\gdsdecomp\exporters\gdextension_exporter.cpp:127)
+
+
+
+------------------------------------------------------------------------------------
+
+Use Godot editor version 4.4.1 to edit the project.
+Note: the project may be using a custom version of Godot. Detection for this has not been implemented yet.
+If you find that you have many non-import errors upon opening the project 
+(i.e. scripts or shaders have many errors), use the original game's binary as the export template.
+
+*******************************************************************************
+

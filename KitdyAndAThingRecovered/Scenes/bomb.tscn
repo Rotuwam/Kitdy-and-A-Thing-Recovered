@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=4 uid="uid://bdsggxs73s22p"]
+
+[ext_resource type="Script" uid="uid://c7rvdhenasp0m" path="res://Scripts/bomb.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dndkrlufnnwl5" path="res://Assests/DEATH AND JINGLE.png" id="2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60xmw"]
+radius = 21.0
+height = 88.0
+
+[node name="Bomb" type="Area2D" groups=["bomb"]]
+scale = Vector2(0.7, 0.7)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-13, 26)
+shape = SubResource("CapsuleShape2D_60xmw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

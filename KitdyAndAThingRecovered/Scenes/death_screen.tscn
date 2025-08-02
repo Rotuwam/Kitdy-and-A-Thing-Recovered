@@ -1,0 +1,150 @@
+[gd_scene load_steps=11 format=4 uid="uid://48kqusfye1dm"]
+
+[ext_resource type="Script" uid="uid://bbwjo2edncnvo" path="res://Scripts/death_screen.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://d3niwtnprc4yq" path="res://Assests/BG.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://djhiq8vnwj6ou" path="res://Assests/UI.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://bdvj4kbdadm8k" path="res://Assests/star.png" id="4"]
+[ext_resource type="PackedScene" uid="uid://bvt17hau3lvhu" path="res://Scenes/audio_manager.tscn" id="5"]
+[ext_resource type="AudioStream" uid="uid://c64e4nc20lh73" path="res://Assests/Audio/doom.wav" id="6"]
+[ext_resource type="PackedScene" uid="uid://mgpa611gop12" path="res://Scenes/install_sounds.tscn" id="7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_amiou"]
+texture = ExtResource("3")
+region_rect = Rect2(500, 840, 128, 127)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vb6s7"]
+texture = ExtResource("3")
+region_rect = Rect2(500, 360, 128, 127)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tpvs2"]
+texture = ExtResource("3")
+region_rect = Rect2(500, 521, 128, 135)
+
+[node name="DEATH_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(641.5, 359)
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 642.0
+offset_bottom = 359.0
+scale = Vector2(2.01, 2.01)
+color = Color(0, 0, 0, 0.298039)
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -444.0
+offset_top = -265.0
+offset_right = 444.0
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3")
+region_rect = Rect2(640, 162, 385, 128)
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
+
+[node name="Label" type="Label" parent="Control/MarginContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 24.0
+offset_right = 849.0
+offset_bottom = 408.0
+theme_override_font_sizes/font_size = 90
+text = "THIS IS 
+BECAUSE YOU 
+DIDN'T
+WASH YOUR PAWS!!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 358.0
+offset_right = 851.0
+offset_bottom = 490.0
+theme_override_constants/separation = 50
+
+[node name="lvl1" type="Button" parent="Control/MarginContainer/NinePatchRect/HBoxContainer"]
+custom_minimum_size = Vector2(150, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxTexture_amiou")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vb6s7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_tpvs2")
+text = "LVL 1"
+
+[node name="lvl2" type="Button" parent="Control/MarginContainer/NinePatchRect/HBoxContainer"]
+custom_minimum_size = Vector2(150, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxTexture_amiou")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vb6s7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_tpvs2")
+text = "LVL 2"
+
+[node name="lvl3" type="Button" parent="Control/MarginContainer/NinePatchRect/HBoxContainer"]
+custom_minimum_size = Vector2(150, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxTexture_amiou")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vb6s7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_tpvs2")
+text = "LVL 3"
+
+[node name="lvl4" type="Button" parent="Control/MarginContainer/NinePatchRect/HBoxContainer"]
+custom_minimum_size = Vector2(150, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxTexture_amiou")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_vb6s7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_tpvs2")
+text = "LVL 4
+"
+
+[node name="star" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(905.25, 517.25)
+scale = Vector2(1.59091, 1.59091)
+texture = ExtResource("4")
+
+[node name="Audio_manager" parent="." instance=ExtResource("5")]
+
+[node name="death_audio" type="AudioStreamPlayer" parent="Audio_manager"]
+stream = ExtResource("6")
+volume_db = -10.0
+autoplay = true
+bus = &"Background"
+
+[node name="InstallSounds" parent="." instance=ExtResource("7")]
+root_path = NodePath("..")
+
+[connection signal="pressed" from="Control/MarginContainer/NinePatchRect/HBoxContainer/lvl1" to="." method="_on_lvl_1_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/NinePatchRect/HBoxContainer/lvl2" to="." method="_on_lvl_2_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/NinePatchRect/HBoxContainer/lvl3" to="." method="_on_lvl_3_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/NinePatchRect/HBoxContainer/lvl4" to="." method="_on_lvl_4_pressed"]

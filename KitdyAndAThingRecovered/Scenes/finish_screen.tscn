@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=4 uid="uid://dgy21ek5k4rrj"]
+
+[ext_resource type="Texture2D" uid="uid://djhiq8vnwj6ou" path="res://Assests/UI.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bdvj4kbdadm8k" path="res://Assests/star.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://bvt17hau3lvhu" path="res://Scenes/audio_manager.tscn" id="3"]
+[ext_resource type="AudioStream" uid="uid://xgmlq4geo5y1" path="res://Assests/Audio/win.wav" id="4"]
+[ext_resource type="AudioStream" uid="uid://cb5ley3263ew4" path="res://Assests/Audio/Kitdy game music no drums.wav" id="5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i2610"]
+texture = ExtResource("1")
+region_rect = Rect2(40, 644, 182, 178)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_epu05"]
+texture = ExtResource("1")
+region_rect = Rect2(283, 646, 187, 174)
+
+[node name="finish_screen" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 642.0
+offset_bottom = 359.0
+scale = Vector2(2.01, 2.01)
+color = Color(0, 0, 0, 0.298039)
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -444.0
+offset_top = -265.0
+offset_right = 444.0
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1")
+region_rect = Rect2(640, 162, 385, 128)
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
+
+[node name="Label" type="Label" parent="Control/MarginContainer/NinePatchRect"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 40.0
+offset_right = 846.0
+offset_bottom = 233.0
+theme_override_font_sizes/font_size = 100
+text = "NICE DINGLINGS
+CLICK ON BLEP!"
+horizontal_alignment = 1
+
+[node name="star" type="Sprite2D" parent="."]
+position = Vector2(1028, 206)
+scale = Vector2(1.59091, 1.59091)
+texture = ExtResource("2")
+
+[node name="blep" type="Button" parent="."]
+offset_left = 459.0
+offset_top = 303.0
+offset_right = 781.0
+offset_bottom = 619.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_i2610")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_epu05")
+theme_override_styles/normal = SubResource("StyleBoxTexture_i2610")
+
+[node name="Audio_manager" parent="." instance=ExtResource("3")]
+
+[node name="finish_audio" type="AudioStreamPlayer" parent="Audio_manager"]
+stream = ExtResource("4")
+volume_db = -10.0
+autoplay = true
+bus = &"Background"
+
+[node name="blep_menu_audio" type="AudioStreamPlayer" parent="Audio_manager"]
+stream = ExtResource("5")
+volume_db = -10.0
+autoplay = true
+bus = &"Background"

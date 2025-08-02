@@ -1,0 +1,15 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://d25vkmce7mhlt"
+path="res://.godot/imported/knewave_regular.ttf-955953b059f713782c7b07e66ab341ec.fontdata"
+
+[deps]
+
+source_file="res://demo/assets/fonts/knewave_regular.ttf"
+dest_files=["res://.godot/imported/knewave_regular.ttf-955953b059f713782c7b07e66ab341ec.fontdata"]
+
+[params]
+
+dummy_value_ignore_me=0

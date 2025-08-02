@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dsxurse18dgy4"
+path="res://.godot/imported/dinge shoot.wav-a96b1ffe062633d17a3f9ae02de23eb1.sample"
+
+[deps]
+
+source_file="res://Assests/Audio/dinge shoot.wav"
+dest_files=["res://.godot/imported/dinge shoot.wav-a96b1ffe062633d17a3f9ae02de23eb1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=0
+compress/mode=0
